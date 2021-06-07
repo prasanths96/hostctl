@@ -10,12 +10,25 @@ type Reporter struct {
 	ReportBody   ReportBody
 }
 
+type ReportBody struct {
+	InstanceId    string        `json:"instanceId"`
+	Command       string        `json:"command"`       // Sub-command of hostctl
+	SuccessReport []interface{} `json:"successReport"` // List of succeeded commands and info
+	ErrorReport   []interface{} `json:"errorReport"`   // List of error commands and info
+}
+
+type Report interface {
+	AddOutput(output string)
+	GetReport() (report interface{})
+}
+
 // toolCmd -> eg: execT
-func NewReporter(httpEndPoint string, toolCmd string) (reporter *Reporter) {
+func NewReporter(httpEndPoint string, toolCmd string, instanceId string) (reporter *Reporter) {
 	reporter = &Reporter{
 		HttpEndPoint: httpEndPoint,
 		ReportBody: ReportBody{
-			Command: toolCmd,
+			InstanceId: instanceId,
+			Command:    toolCmd,
 		},
 	}
 	return
@@ -54,14 +67,3 @@ func (rep *Reporter) SubmitReport() {
 }
 
 // Post end point
-
-type ReportBody struct {
-	Command       string        `json:"command"`       // Sub-command of hostctl
-	SuccessReport []interface{} `json:"successReport"` // List of succeeded commands and info
-	ErrorReport   []interface{} `json:"errorReport"`   // List of error commands and info
-}
-
-type Report interface {
-	AddOutput(output string)
-	GetReport() (report interface{})
-}

@@ -30,6 +30,7 @@ var execTFlags struct {
 }
 
 type ExecTConfig struct {
+	InstanceID     string    `json:"instance-id"`
 	ReportEndpoint string    `json:"report-endpoint"`
 	Commands       []Command `json:"commands"`
 }
@@ -101,7 +102,7 @@ func (execTRep *ExecTReport) GetReport() (execTReport interface{}) {
 var breporter *reporter.Reporter
 
 func newReporter() {
-	breporter = reporter.NewReporter(execTConfig.ReportEndpoint, "execT")
+	breporter = reporter.NewReporter(execTConfig.ReportEndpoint, "execT", execTConfig.InstanceID)
 }
 
 func runExecT() {

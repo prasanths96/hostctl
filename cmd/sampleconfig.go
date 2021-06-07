@@ -28,7 +28,8 @@ var execTSampleConfigFlags struct {
 type Object map[string]interface{}
 
 var sampleJson = Object{
-	"bimt-host-endpoint": "http://localhost:8090/deployer/status",
+	"instance-id":     "1",
+	"report-endpoint": "http://localhost:8090/deployer/status",
 	"commands": []Object{
 		{
 			"dir":     "",
