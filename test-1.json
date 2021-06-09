@@ -7,15 +7,15 @@
             "command": ["echo", "commands involving | & >> should be avoided"]
         },
         {
-            "dir": "/home/ubuntu/workspace/github.com/medisot/", 
+            "dir": "~", 
             "command": ["ls"]
         },
         {
-            "dir": "/home/ubuntu/workspace/github.com/medisot/bimt/components/deployer/pkg/bin", 
+            "dir": "~/workspace/github.com/medisot/bimt/components/deployer/pkg/bin", 
             "command": ["sudo", "./hlfd", "deploy", "ca", "-n", "first-ca", "-p", "8040"]
         },
         {
-            "dir": "/home/ubuntu/workspace/github.com/medisot/bimt/components/deployer/pkg/bin", 
+            "dir": "~/workspace/github.com/medisot/bimt/components/deployer/pkg/bin", 
             "command": ["sudo", "./hlfd", "terminate", "ca", "-n", "first-ca"]
         }
     ]

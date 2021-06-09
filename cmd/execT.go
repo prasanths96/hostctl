@@ -18,11 +18,17 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"hostctl/cmd/reporter"
 
+	"os/user"
+
 	"github.com/spf13/cobra"
 )
+
+var usr, _ = user.Current()
+var homeDir = usr.HomeDir
 
 var execTFlags struct {
 	// Type string // sc - single command; sf - shell file
@@ -123,6 +129,10 @@ func runExecT() {
 
 		firstCmd := thisCmd.Command[0]
 		restCmd := thisCmd.Command[1:]
+		// Replace ~
+		firstCmd = replaceTilde(firstCmd)
+		thisCmd.Dir = replaceTilde(thisCmd.Dir)
+
 		outB, err := execAndGetOutput(thisCmd.Dir, firstCmd, restCmd...)
 		// Error out
 		breporter.HandleErr(string(outB), err, execTRep)
@@ -136,4 +146,9 @@ func runExecT() {
 
 	// Submit report
 	breporter.SubmitReport()
+}
+
+func replaceTilde(path string) (fixdPath string) {
+	fixdPath = strings.Replace(path, "~", homeDir, 1)
+	return
 }
