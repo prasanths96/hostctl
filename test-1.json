@@ -1,6 +1,6 @@
 {
-    "instance-id": "1",
-    "report-endpoint": "http://localhost:8090/deployer/status",
+    "instance-id": "68ffb06c-de25-4d55-a3cf-0518bbd36d6a",
+    "report-endpoint": "http://localhost:3000/deployer/deployment/update",
     "commands": [
         {
             "dir": "", 

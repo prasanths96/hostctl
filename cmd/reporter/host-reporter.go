@@ -1,6 +1,7 @@
 package reporter
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 )
@@ -64,6 +65,15 @@ func (rep *Reporter) SubmitReport() {
 	// Send the reportBody
 	fmt.Println("REPORT SUBMITTED:")
 	fmt.Printf("%+v\n", rep.ReportBody)
+
+	// Send to http
+	m, err := json.Marshal(rep.ReportBody)
+	if err != nil {
+		panic(err.Error()) // handle
+	}
+
+	post(rep.HttpEndPoint, m)
+
 }
 
 // Post end point
