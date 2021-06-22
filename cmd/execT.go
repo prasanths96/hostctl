@@ -127,11 +127,14 @@ func runExecT() {
 			breporter.HandleErr("", fmt.Errorf("invalid command"), execTRep)
 		}
 
+		// Replace ~ / TODO change this workaround with execMultiCommand
+		thisCmd.Dir = replaceTilde(thisCmd.Dir)
+		for i := 0; i < len(thisCmd.Command); i++ {
+			thisCmd.Command[i] = replaceTilde(thisCmd.Command[i])
+		}
+
 		firstCmd := thisCmd.Command[0]
 		restCmd := thisCmd.Command[1:]
-		// Replace ~
-		firstCmd = replaceTilde(firstCmd)
-		thisCmd.Dir = replaceTilde(thisCmd.Dir)
 
 		outB, err := execAndGetOutput(thisCmd.Dir, firstCmd, restCmd...)
 		// Error out
