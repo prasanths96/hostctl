@@ -11,11 +11,11 @@
             "command": ["ls"]
         },
         {
-            "dir": "~/workspace/github.com/medisot/bimt/components/deployer/pkg/bin", 
+            "dir": "~/workspace/github.com/prasanths96/hlfd/pkg/bin", 
             "command": ["sudo", "./hlfd", "deploy", "ca", "-n", "first-ca", "-p", "8040"]
         },
         {
-            "dir": "~/workspace/github.com/medisot/bimt/components/deployer/pkg/bin", 
+            "dir": "~/workspace/github.com/prasanths96/hlfd/pkg/bin", 
             "command": ["sudo", "./hlfd", "terminate", "ca", "-n", "first-ca"]
         }
     ]

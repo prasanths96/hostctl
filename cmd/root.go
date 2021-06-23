@@ -30,8 +30,8 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "hostctl",
-	Short: "A puppet tool that wil run a set of given tasks|commands in localhost and report back results to an http endpoint.",
-	Long:  `A puppet tool that wil run a set of given tasks|commands in localhost and report back results to an http endpoint.`,
+	Short: "A puppet tool that will run a set of given tasks|commands in localhost and report back results to an http endpoint.",
+	Long:  `A puppet tool that will run a set of given tasks|commands in localhost and report back results to an http endpoint.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
