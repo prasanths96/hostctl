@@ -70,7 +70,7 @@ func init() {
 }
 
 func generateSample() {
-	mc, err := json.Marshal(sampleJson)
+	mc, err := json.MarshalIndent(sampleJson, " ", "  ")
 	cobra.CheckErr(err)
 	writeBytesToFile("sample-config.json", execTSampleConfigFlags.Path, mc)
 }
